@@ -1,0 +1,255 @@
+@import "tailwindcss";
+
+@theme {
+  --color-plum: #7a2e9b;
+  --color-plum-deep: #4c1a6b;
+  --color-plum-soft: #f7e8fb;
+  --color-teal: #7dde9a;
+  --color-teal-deep: #1b7a46;
+  --color-yellow: #ffe566;
+  --color-yellow-deep: #f0c400;
+  --color-coral: #ff7eb3;
+  --color-coral-deep: #c43b70;
+  --color-sky: #7ed6f5;
+  --color-sky-deep: #0e7490;
+  --color-lavender: #d7b4f5;
+  --color-lavender-deep: #6b3fa0;
+  --color-cream: #fff8fc;
+  --color-mint: #e7f8ee;
+  --color-peach: #ffe8f1;
+  --color-ink: #332638;
+  --color-muted: #5e5664;
+  --color-line: #f0d6e8;
+  --color-blush: #ffc2d8;
+  --color-sand: #ffe9a8;
+  --color-sand-deep: #7a2e9b;
+  --color-pink: #ff7eb3;
+  --color-sea: #7ed6f5;
+
+  --font-display: var(--font-fredoka), var(--font-nunito), "Segoe UI", sans-serif;
+  --font-sans: var(--font-nunito), "Segoe UI", sans-serif;
+  --font-kids: var(--font-fredoka), var(--font-nunito), "Segoe UI", sans-serif;
+
+  --shadow-soft: 0 16px 40px rgba(51, 38, 56, 0.1);
+  --shadow-card: 0 8px 24px rgba(51, 38, 56, 0.08);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-teal-deep);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: #ffe566;
+    color: #332638;
+  }
+
+  [id] {
+    scroll-margin-top: 6.5rem;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 80;
+  border-radius: 999px;
+  background: #fff;
+  color: #4c1a6b;
+  padding: 0.75rem 1rem;
+  font-weight: 800;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.kids-sky {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255, 229, 102, 0.55), transparent 26%),
+    radial-gradient(circle at 88% 10%, rgba(126, 214, 245, 0.95), transparent 28%),
+    radial-gradient(circle at 70% 82%, rgba(255, 126, 179, 0.35), transparent 24%),
+    linear-gradient(180deg, #e7f8ff 0%, #f4fff6 46%, #fff8fc 100%);
+}
+
+.select-chevron {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 8l5 5 5-5' stroke='%237A2E9B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: right 0.9rem center;
+  background-repeat: no-repeat;
+}
+
+.float-y {
+  animation: float-y 7s ease-in-out infinite;
+}
+
+.float-slow {
+  animation: float-y 9s ease-in-out 0.8s infinite;
+}
+
+.seed-grow {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  animation: grow-up 1.8s ease-out both;
+}
+
+.bubble {
+  animation: bubble-rise 3s ease-in infinite;
+}
+
+.stretch-arms .arm-left,
+.stretch-arms .arm-right {
+  transform-box: view-box;
+  transform-origin: center;
+}
+
+.stretch-arms .arm-left {
+  animation: reach-left 2.8s ease-in-out;
+}
+
+.stretch-arms .arm-right {
+  animation: reach-right 2.8s ease-in-out;
+}
+
+.giraffe-happy {
+  transform-origin: center bottom;
+  animation: gentle-wag 0.9s ease-in-out 2;
+}
+
+.reward-pop {
+  animation: reward-pop 0.4s ease-out both;
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes grow-up {
+  from {
+    transform: scaleY(0.15);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes bubble-rise {
+  0% {
+    transform: translateY(10px) scale(0.7);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-86px) scale(1.08);
+    opacity: 0;
+  }
+}
+
+@keyframes reach-left {
+  0% {
+    transform: rotate(18deg);
+  }
+  42%,
+  68% {
+    transform: rotate(-155deg);
+  }
+  100% {
+    transform: rotate(18deg);
+  }
+}
+
+@keyframes reach-right {
+  0% {
+    transform: rotate(-18deg);
+  }
+  42%,
+  68% {
+    transform: rotate(155deg);
+  }
+  100% {
+    transform: rotate(-18deg);
+  }
+}
+
+@keyframes gentle-wag {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-2.5deg);
+  }
+}
+
+@keyframes reward-pop {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .float-y,
+  .float-slow,
+  .seed-grow,
+  .bubble,
+  .stretch-arms .arm-left,
+  .stretch-arms .arm-right,
+  .giraffe-happy,
+  .reward-pop {
+    animation: none !important;
+  }
+
+  .seed-grow {
+    transform: none;
+  }
+
+  .stretch-arms .arm-left {
+    transform: rotate(-155deg);
+  }
+
+  .stretch-arms .arm-right {
+    transform: rotate(155deg);
+  }
+}
